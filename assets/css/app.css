@@ -1,0 +1,19 @@
+/* Fix to Bootstrap */
+body {
+    padding-top: 70px;
+}
+
+/* Parallax */
+.parallax {
+    background-image: url('');
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@media only screen and (max-device-width: 900px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
