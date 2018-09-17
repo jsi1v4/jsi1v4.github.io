@@ -6,7 +6,7 @@
 	<!-- Meta -->
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="author" content="Jose Silva">
 	<meta name="description" content="Personal informations, portfolio and tools">
 	<meta name="keywords" content="Joseph, Jose Silva, Jsi1v4">
@@ -17,7 +17,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css" />
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#main-menu">
 	<!-- Main -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
@@ -30,29 +30,82 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a href="#" class="navbar-brand">
-					LOGO
+					<img src="assets/img/profile.png" class="img-circle img-responsive">
 				</a>
 			</div>
 
-			<div class="collapse navbar-collapse" id="main-menu">
-				<ul class="nav navbar-nav">
-					<li><a href="#">Resumo</a></li>
-					<li><a href="#">Portfolio</a></li>
-					<li><a href="#">Profissional</a></li>
-					<li><a href="#">Pessoal</a></li>
-					<li><a href="#">Code</a></li>
-					<li><a href="#">Contato</a></li>
+			<span class="collapse navbar-collapse" id="main-menu">
+				<ul class="nav navbar-nav" role="tablist">
+					<li class="active">
+						<a class="navbar-link" href="#resume">
+							<i class="fas fa-user"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a class="navbar-link" href="#portfolio">
+							<i class="fas fa-book-open"></i>
+							Portfolio
+						</a>
+					</li>
+					<li>
+						<a class="navbar-link" href="#professional">
+							<i class="fas fa-briefcase"></i>
+							Professional
+						</a>
+					</li>
+					<li>
+						<a class="navbar-link" href="#skills">
+							<i class="fas fa-brain"></i>
+							Skills
+						</a>
+					</li>
+					<li>
+						<a class="navbar-link" href="#code">
+							<i class="fas fa-code"></i>
+							Code
+						</a>
+					</li>
+					<li>
+						<a class="navbar-link" href="#contact">
+							<i class="fas fa-phone"></i>
+							Contact
+						</a>
+					</li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<a class="drown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-wrench"></i>
 							Tools 
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Agenda</a></li>
-							<li><a href="#">Sql Compass</a></li>
+							<li>
+								<a href="#">
+									<i class="fas fa-sticky-note fas-margin"></i>
+									Notes
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-terminal fas-margin"></i>
+									Configs
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-database fas-margin"></i>
+									DBA
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-laptop-code fas-margin"></i>
+									Dev
+								</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -61,7 +114,68 @@
 		</div>
 	</nav>
 
-	<div class="parallax"></div>
+	<div class="parallax-bg">
+		<section id="resume">
+
+			<!-- Resume -->
+			<div class="panel-bg panel-color">
+				<div class="row container">
+					<div class="col-xs-12 col-md-6">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin, diam nec tristique mattis, tellus velit ultrices libero, sed iaculis neque massa eget risus. Mauris et porttitor leo, eget placerat nibh. Aliquam erat volutpat. Vestibulum sed massa purus. Sed et porta eros. Praesent nec blandit velit, a varius neque. Nullam blandit ultricies mi, eu luctus lorem aliquet nec. Praesent vel pretium dui, eget tempor risus. Maecenas varius sed felis nec hendrerit. Vestibulum eu lacus lobortis, blandit leo eget, commodo urna. Cras dapibus, sem sit amet vulputate tempus, ante odio ultrices ante, in mollis nibh lacus in est. Nulla massa nisi, varius in viverra et, venenatis at est.
+					</div>
+					<div class="col-xs-12 col-md-6">
+						Proin consequat imperdiet turpis vel pharetra. Aenean ac ex at ligula eleifend volutpat eget in odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus lobortis, massa eget vulputate blandit, turpis tellus aliquam turpis, ac gravida quam urna ac lectus. Quisque lacinia semper ex, sed fermentum libero malesuada eu. Phasellus vel porta justo. Praesent hendrerit orci a purus suscipit, id pharetra ex pharetra. Praesent sit amet rutrum neque. Quisque porttitor faucibus viverra. Vivamus nec egestas ante, sit amet condimentum est. Fusce efficitur mauris vitae facilisis vulputate.
+					</div>
+				</div>
+			</div>
+
+		</section>
+		<div class="panel-sp"></div>
+		<section id="portfolio">
+
+			<!-- Portfolio -->
+			<div class="panel-bg panel-color">
+
+			</div>
+
+		</section>
+		<div class="panel-sp"></div>
+		<section id="professional">
+
+			<!-- Professional -->
+			<div class="panel-bg panel-color">
+
+			</div>
+			
+		</section>
+		<div class="panel-sp"></div>
+		<section id="skills">
+
+			<!-- Skills -->
+			<div class="panel-bg panel-color">
+
+			</div>
+
+		</section>
+		<div class="panel-sp"></div>
+		<section id="code">
+
+			<!-- Code -->
+			<div class="panel-bg panel-color">
+
+			</div>
+
+		</section>
+		<div class="panel-sp"></div>
+		<section id="contact">
+
+			<!-- Contact -->
+			<div class="panel-bg panel-color">
+
+			</div>
+
+		</section>
+	</div>
 
 	<!-- Scripts -->
 	<script src="assets/js/jquery-3.3.1.min.js"></script>
