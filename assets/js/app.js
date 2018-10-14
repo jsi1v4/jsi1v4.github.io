@@ -4,29 +4,17 @@ $(document).ready(() => {
     let info = {
         name: 'Jose Silva',
         email: 'josepaulo.araujos@gmail.com',
-        linkedin: 'www.linkedin.com/in/josesilva000',
-        resume:
+        linkedin: 'www.linkedin.com/in/josesilva000'
+    };
+    let resume = {
+        img: '',
+        info:
         `
             Sendo autodidata, procuro me desenvolver estudando e criando projetos práticos e próprios onde aplico diversas tecnologias estudadas,
             ampliando assim minha afinidade com desenvolvimento de ideias e de resolver problemas;
             Perfeccionista, culto e atento a qualidade e aos detalhes define o meu tipo profissional.
         `,
-        professional:
-        `
-            Dei início trabalhando como auxiliar no Grupo Pão de Açúcar, em seguida atuei no setor de planejamento operacional 
-            no E-Commerce Walmart.com como assistente onde participei de rotinas administrativas, criação e automatização de controles 
-            e kpis utilizando ferramentas e programação VBA/Html/Css/Sql, entre outras atividades diárias. 
-            Logo após iniciei como analista/desenvolvedor júnior na G5 | Evercore criando e automatizando controles, 
-            desenvolvendo novas features em sistema legado com Asp.Net, em backend NodeJs, banco de dados noSql com MongoDB, 
-            em mobile com JavaScript e Swift e criando robôs de automatização com Python.
-        `,
-        goal:
-        `
-            Neste momento procuro dar continuidade a minha carreira em Tecnologia da informação, como analista/desenvolvedor júnior, 
-            aplicando e absorvendo conhecimentos, como rotinas da área e desenvolvimento de sistemas/App.
-        `,
-        formation:
-        [
+        formation: [
             {
                 name: 'Análise e Desenvolvimento de Sistemas',
                 nivel: 'Superior',
@@ -55,7 +43,23 @@ $(document).ready(() => {
                     
                 `
             }
-        ],
+        ]
+    };
+    let professional = {
+        info:
+        `
+            Dei início trabalhando como auxiliar no Grupo Pão de Açúcar, em seguida atuei no setor de planejamento operacional 
+            no E-Commerce Walmart.com como assistente onde participei de rotinas administrativas, criação e automatização de controles 
+            e kpis utilizando ferramentas e programação VBA/Html/Css/Sql, entre outras atividades diárias. 
+            Logo após iniciei como analista/desenvolvedor júnior na G5 | Evercore criando e automatizando controles, 
+            desenvolvendo novas features em sistema legado com Asp.Net, em backend NodeJs, banco de dados noSql com MongoDB, 
+            em mobile com JavaScript e Swift e criando robôs de automatização com Python.
+        `,
+        goal:
+        `
+            Neste momento procuro dar continuidade a minha carreira em Tecnologia da informação, como analista/desenvolvedor júnior, 
+            aplicando e absorvendo conhecimentos, como rotinas da área e desenvolvimento de sistemas/App.
+        `,
         experience:
         [
             {
@@ -102,7 +106,7 @@ $(document).ready(() => {
                 details: 'Desenvolvimento com Php e framework Laravel: Front: Html/Css Blade Template (Laravel); Back: Route/Controller/Migrations (Laravel); Desenvolviemento em Banco de dados com MySql: Modelagem DER, Criação de scripts sql, Consultas e afins.'
             }
         ]
-    }
+    };
 
     /* ScrollSpy */
     $('body').scrollspy({ target: '#main-menu' });
@@ -113,15 +117,10 @@ $(document).ready(() => {
     /* Append */
     $('#person').src('assets/img/person.png');
 
-    $('#info#name').text(info.name);
-    $('#info#email').text(info.email);
-    $('#info#linkedin').text(info.linkedin);
+    $('#resume#img').src(resume.img);
+    $('#resume#info').text(resume.info);
 
-    $('#info#resume').text(info.resume);
-    $('#info#professional').text(info.professional);
-    $('#info#goal').text(info.goal);
-    $('#info#voluntary').text(info.voluntary);
-
+    /*
     $('#formation#name').text(info.formation.name);
     $('#formation#nivel').text(info.formation.nivel);
     $('#formation#details').text(info.formation.details);
@@ -139,4 +138,5 @@ $(document).ready(() => {
     $('#voluntary#endDt').text(info.voluntary.endDt);
     $('#voluntary#role').text(info.voluntary.role);
     $('#voluntary#details').text(info.voluntary.details);
+    */
 });
