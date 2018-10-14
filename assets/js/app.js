@@ -4,7 +4,8 @@ $(document).ready(() => {
     let info = {
         name: 'Jose Silva',
         email: 'josepaulo.araujos@gmail.com',
-        linkedin: 'www.linkedin.com/in/josesilva000'
+        linkedin: 'www.linkedin.com/in/josesilva000',
+        img: 'assets/img/person.png'
     };
     let resume = {
         img: '',
@@ -115,10 +116,10 @@ $(document).ready(() => {
     );
 
     /* Append */
-    $('#person').src('assets/img/person.png');
+    $('#person').attr('src', info.img);
 
-    $('#resume#img').src(resume.img);
-    $('#resume#info').text(resume.info);
+    $('#resume-img').attr('src', resume.img);
+    $('#resume-info').text(resume.info);
 
     /*
     $('#formation#name').text(info.formation.name);
