@@ -109,4 +109,34 @@ $(document).ready(() => {
     $('[data-spy="scroll"]').each(
         () => $(this).scrollspy('refresh')
     );
+
+    /* Append */
+    $('#person').src('assets/img/person.png');
+
+    $('#info#name').text(info.name);
+    $('#info#email').text(info.email);
+    $('#info#linkedin').text(info.linkedin);
+
+    $('#info#resume').text(info.resume);
+    $('#info#professional').text(info.professional);
+    $('#info#goal').text(info.goal);
+    $('#info#voluntary').text(info.voluntary);
+
+    $('#formation#name').text(info.formation.name);
+    $('#formation#nivel').text(info.formation.nivel);
+    $('#formation#details').text(info.formation.details);
+
+    $('#experience#name').text(info.experience.name);
+    $('#experience#where').text(info.experience.where);
+    $('#experience#beginDt').text(info.experience.beginDt);
+    $('#experience#endDt').text(info.experience.endDt);
+    $('#experience#role').text(info.experience.role);
+    $('#experience#details').text(info.experience.details);
+
+    $('#voluntary#name').text(info.voluntary.name);
+    $('#voluntary#where').text(info.voluntary.where);
+    $('#voluntary#beginDt').text(info.voluntary.beginDt);
+    $('#voluntary#endDt').text(info.voluntary.endDt);
+    $('#voluntary#role').text(info.voluntary.role);
+    $('#voluntary#details').text(info.voluntary.details);
 });
