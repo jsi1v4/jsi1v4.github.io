@@ -8,7 +8,7 @@ $(document).ready(() => {
         img: 'assets/img/person.png'
     };
     let resume = {
-        img: '',
+        img: 'assets/img/resume.png',
         info:
         `
             Sendo autodidata, procuro me desenvolver estudando e criando projetos práticos e próprios onde aplico diversas tecnologias estudadas,
