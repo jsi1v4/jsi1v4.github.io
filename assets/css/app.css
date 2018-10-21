@@ -78,3 +78,54 @@ body {
         font-size: medium;
     }
 }
+
+/* Professional */
+.professional {
+    padding-top: 80px;
+}
+@media only screen and (max-device-width: 900px) {
+    .professional {
+        padding-top: 0px;
+    }
+}
+
+/* Portfolio */
+.portfolio {
+    padding-top: 80px;
+}
+@media only screen and (max-device-width: 900px) {
+    .portfolio {
+        padding-top: 0px;
+    }
+}
+
+/* Skills */
+.skills {
+    padding-top: 80px;
+}
+@media only screen and (max-device-width: 900px) {
+    .skills {
+        padding-top: 0px;
+    }
+}
+
+/* Code */
+.code {
+    padding-top: 80px;
+}
+@media only screen and (max-device-width: 900px) {
+    .code {
+        padding-top: 0px;
+    }
+}
+
+/* Contact */
+.contact {
+    padding-top: 80px;
+}
+@media only screen and (max-device-width: 900px) {
+    .contact {
+        padding-top: 0px;
+    }
+}
+

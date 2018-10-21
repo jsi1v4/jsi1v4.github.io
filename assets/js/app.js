@@ -20,37 +20,7 @@ $(document).ready(() => {
         `
             Neste momento procuro dar continuidade a minha carreira em Tecnologia da informação, como analista/desenvolvedor júnior, 
             aplicando e absorvendo conhecimentos, como rotinas da área e desenvolvimento de sistemas/App.
-        `,
-        formation: [
-            {
-                name: 'Análise e Desenvolvimento de Sistemas',
-                nivel: 'Superior',
-                details:
-                `
-                    Banco de dados: Modelagem e Oracle 11g; 
-                    Linguagens: C, Java, C#, PHP, PL/SQL e Html/Css/JavaScript; 
-                    Infra: Redes, hardware e Sistemas Distribuídos; 
-                    Gestão: Qualidade de software, Engenharia de software e Processos de Negócios; 
-                    Outros: Estáticas, Empreendedorismo, processos de desenvolvimento.
-                `
-            },
-            {
-                name: 'Hardware e Redes',
-                nivel: 'Tecnico',
-                details:
-                `
-                    
-                `
-            },
-            {
-                name: 'Tec. em Informática',
-                nivel: 'Tecnico',
-                details:
-                `
-                    
-                `
-            }
-        ]
+        `
     };
     let professional = {
         info:
@@ -109,6 +79,71 @@ $(document).ready(() => {
             }
         ]
     };
+    let portfolio = {
+        info: '',
+        items: [
+            {
+                name: '',
+                img: '',
+                details:
+                `
+                    
+                `
+            }
+        ]
+    };
+    let skills = {
+        info: '',
+        formation: [
+            {
+                name: 'Análise e Desenvolvimento de Sistemas',
+                nivel: 'Superior',
+                details:
+                `
+                    Banco de dados: Modelagem e Oracle 11g; 
+                    Linguagens: C, Java, C#, PHP, PL/SQL e Html/Css/JavaScript; 
+                    Infra: Redes, hardware e Sistemas Distribuídos; 
+                    Gestão: Qualidade de software, Engenharia de software e Processos de Negócios; 
+                    Outros: Estáticas, Empreendedorismo, processos de desenvolvimento.
+                `
+            },
+            {
+                name: 'Hardware e Redes',
+                nivel: 'Tecnico',
+                details:
+                `
+                    
+                `
+            },
+            {
+                name: 'Tec. em Informática',
+                nivel: 'Tecnico',
+                details:
+                `
+                    
+                `
+            }
+        ],
+        abilities: [
+            {
+                name: '',
+                point: 0
+            }
+        ]
+    };
+    let code = {
+        info: '',
+        items: [
+            {
+                name: '',
+                type: '',
+                details:
+                `
+                    
+                `
+            }
+        ]
+    }
 
     /* ScrollSpy */
     $('body').scrollspy({ target: '#main-menu' });
@@ -124,23 +159,4 @@ $(document).ready(() => {
     $('#resume-info').text(resume.info);
     $('#resume-goal').text(resume.goal);
 
-    /*
-    $('#formation#name').text(info.formation.name);
-    $('#formation#nivel').text(info.formation.nivel);
-    $('#formation#details').text(info.formation.details);
-
-    $('#experience#name').text(info.experience.name);
-    $('#experience#where').text(info.experience.where);
-    $('#experience#beginDt').text(info.experience.beginDt);
-    $('#experience#endDt').text(info.experience.endDt);
-    $('#experience#role').text(info.experience.role);
-    $('#experience#details').text(info.experience.details);
-
-    $('#voluntary#name').text(info.voluntary.name);
-    $('#voluntary#where').text(info.voluntary.where);
-    $('#voluntary#beginDt').text(info.voluntary.beginDt);
-    $('#voluntary#endDt').text(info.voluntary.endDt);
-    $('#voluntary#role').text(info.voluntary.role);
-    $('#voluntary#details').text(info.voluntary.details);
-    */
 });
