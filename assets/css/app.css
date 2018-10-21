@@ -138,3 +138,16 @@ body {
     }
 }
 
+/* Footer */
+.footer {
+    background-color: rgb(34, 34, 34);
+    height: 50px;
+    width: 100%;
+    padding: 15px;
+}
+.footer .left {
+    float: left;
+}
+.footer .right {
+    float: right;
+}
