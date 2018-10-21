@@ -35,12 +35,13 @@ $(document).ready(() => {
         experience:
         [
             {
-                name: 'Compackta Ltda',
+                name: 'Compackta prestadora de serviços do grupo Pão de Açucar',
                 where: 'Sao Paulo',
                 beginDt: '2012-11-28',
                 endDt: '2013-09-02',
                 role: 'Auxiliar/Conferente',
-                details: 'Separação de pedidos, conferencias de cargas e controle de docas.'
+                details: 'Separação de pedidos, conferencias de cargas e controle de docas.',
+                img: 'assets/img/empty.png'
             },
             {
                 name: 'Walmart.com',
@@ -48,7 +49,8 @@ $(document).ready(() => {
                 beginDt: '2014-06-13',
                 endDt: '2015-10-01',
                 role: 'Auxiliar de Faturamento',
-                details: 'Conferência de produtos e pedidos, emissão de notas fiscais e afins.'
+                details: 'Conferência de produtos e pedidos, emissão de notas fiscais e afins.',
+                img: 'assets/img/walmart.png'
             },
             {
                 name: 'Walmart.com',
@@ -56,7 +58,8 @@ $(document).ready(() => {
                 beginDt: '2015-10-01',
                 endDt: '2018-03-19',
                 role: 'Assistente',
-                details: 'Controle de Kpis, planejamento, criação de controles e relatórios, automação de controles utilizando: VBA, Dot.Net e Html, Excel Forms, Recordset e Functions, Acess Consultas, Formulários, Relatórios Avançados.'
+                details: 'Controle de Kpis, planejamento, criação de controles e relatórios, automação de controles utilizando: VBA, Dot.Net e Html, Excel Forms, Recordset e Functions, Acess Consultas, Formulários, Relatórios Avançados.',
+                img: 'assets/img/walmart.png'
             },
             {
                 name: 'G5 | Evercore',
@@ -64,7 +67,8 @@ $(document).ready(() => {
                 beginDt: '2018-07-25',
                 endDt: 'Ate o momento',
                 role: 'Analista Programador Junior',
-                details: 'Criação e automatização de controles com VBA, Desenvolvimentos: Intranet em Asp.Net, Robôs de captura de informações em Python, App de acesso para clientes em Swift, Web em Jquery/Html/Css como view (logica em backend), Server em NodeJs/Express com render Pug/Jade, DataBase em Sql Server e MongoDB.'
+                details: 'Criação e automatização de controles com VBA, Desenvolvimentos: Intranet em Asp.Net, Robôs de captura de informações em Python, App de acesso para clientes em Swift, Web em Jquery/Html/Css como view (logica em backend), Server em NodeJs/Express com render Pug/Jade, DataBase em Sql Server e MongoDB.',
+                img: 'assets/img/g5.png'
             }
         ],
         voluntary:
@@ -75,7 +79,8 @@ $(document).ready(() => {
                 beginDt: '2018-08-15',
                 endDt: 'Ate o momento',
                 role: 'Programador',
-                details: 'Desenvolvimento com Php e framework Laravel: Front: Html/Css Blade Template (Laravel); Back: Route/Controller/Migrations (Laravel); Desenvolviemento em Banco de dados com MySql: Modelagem DER, Criação de scripts sql, Consultas e afins.'
+                details: 'Desenvolvimento com Php e framework Laravel: Front: Html/Css Blade Template (Laravel); Back: Route/Controller/Migrations (Laravel); Desenvolviemento em Banco de dados com MySql: Modelagem DER, Criação de scripts sql, Consultas e afins.',
+                img: 'assets/img/uninove.png'
             }
         ]
     };
@@ -159,4 +164,5 @@ $(document).ready(() => {
     $('#resume-info').text(resume.info);
     $('#resume-goal').text(resume.goal);
 
+    $('#professional-info').text(professional.info);
 });
