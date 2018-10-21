@@ -45,24 +45,12 @@ body {
     }
 }
 
-/* Panel */
-.panel-bg {
+/* Resume */
+.resume {
     width: 100%;
     height: 100%;
     padding: 10% 15%;
-}
-@media only screen and (max-device-width: 900px) {
-    .panel-bg {
-        padding: 10% 5%;
-    }
-}
-.panel-color {
-    background-color: rgb(10, 10, 10, 0.5)
-}
-
-/* Resume */
-.resume {
-    padding-top: 80px;
+    background-color: rgb(10, 10, 10, 0.5);
 }
 .resume .resume-info {
     font-size: x-large;
@@ -72,7 +60,7 @@ body {
 }
 @media only screen and (max-device-width: 900px) {
     .resume {
-        padding-top: 0px;
+        padding: 10% 5%;
     }
     .resume .resume-info {
         font-size: medium;
@@ -81,51 +69,72 @@ body {
 
 /* Professional */
 .professional {
-    padding-top: 80px;
+    width: 100%;
+    height: 100%;
+    padding: 10% 15%;
+    background-color: rgb(10, 10, 10, 0.5)
+}
+.professional-info {
+    font-size: x-large;
 }
 @media only screen and (max-device-width: 900px) {
     .professional {
-        padding-top: 0px;
+        padding: 10% 5%;
+    }
+    .professional-info {
+        font-size: medium;
     }
 }
 
 /* Portfolio */
 .portfolio {
-    padding-top: 80px;
+    width: 100%;
+    height: 100%;
+    padding: 10% 15%;
+    background-color: rgb(10, 10, 10, 0.5)
 }
 @media only screen and (max-device-width: 900px) {
     .portfolio {
-        padding-top: 0px;
+        padding: 10% 5%;
     }
 }
 
 /* Skills */
 .skills {
-    padding-top: 80px;
+    width: 100%;
+    height: 100%;
+    padding: 10% 15%;
+    background-color: rgb(10, 10, 10, 0.5)
 }
 @media only screen and (max-device-width: 900px) {
     .skills {
-        padding-top: 0px;
+        padding: 10% 5%;
     }
 }
 
 /* Code */
 .code {
-    padding-top: 80px;
+    width: 100%;
+    height: 100%;
+    padding: 10% 15%;
+    background-color: rgb(10, 10, 10, 0.5)
 }
 @media only screen and (max-device-width: 900px) {
     .code {
-        padding-top: 0px;
+        padding: 10% 5%;
     }
 }
 
 /* Contact */
 .contact {
-    padding-top: 80px;
+    width: 100%;
+    height: 100%;
+    padding: 10% 15%;
+    background-color: rgb(10, 10, 10, 0.5)
 }
 @media only screen and (max-device-width: 900px) {
     .contact {
-        padding-top: 0px;
+        padding: 10% 5%;
     }
 }
 
