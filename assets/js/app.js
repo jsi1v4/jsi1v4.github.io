@@ -15,6 +15,11 @@ $(document).ready(() => {
             ampliando assim minha afinidade com desenvolvimento de ideias e de resolver problemas;
             Perfeccionista, culto e atento a qualidade e aos detalhes define o meu tipo profissional.
         `,
+        goal:
+        `
+            Neste momento procuro dar continuidade a minha carreira em Tecnologia da informação, como analista/desenvolvedor júnior, 
+            aplicando e absorvendo conhecimentos, como rotinas da área e desenvolvimento de sistemas/App.
+        `,
         formation: [
             {
                 name: 'Análise e Desenvolvimento de Sistemas',
@@ -55,11 +60,6 @@ $(document).ready(() => {
             Logo após iniciei como analista/desenvolvedor júnior na G5 | Evercore criando e automatizando controles, 
             desenvolvendo novas features em sistema legado com Asp.Net, em backend NodeJs, banco de dados noSql com MongoDB, 
             em mobile com JavaScript e Swift e criando robôs de automatização com Python.
-        `,
-        goal:
-        `
-            Neste momento procuro dar continuidade a minha carreira em Tecnologia da informação, como analista/desenvolvedor júnior, 
-            aplicando e absorvendo conhecimentos, como rotinas da área e desenvolvimento de sistemas/App.
         `,
         experience:
         [
@@ -118,8 +118,10 @@ $(document).ready(() => {
     /* Append */
     $('#person').attr('src', info.img);
 
+    $('#resume-name').text(info.name);
     $('#resume-img').attr('src', resume.img);
     $('#resume-info').text(resume.info);
+    $('#resume-goal').text(resume.goal);
 
     /*
     $('#formation#name').text(info.formation.name);
