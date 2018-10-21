@@ -1,19 +1,22 @@
-/* Extend Bootstrap */
+/* Fonts */
+@font-face {
+    font-family: term;
+    src: url('../fonts/terminus-regular.ttf');
+}
 body {
-    padding-top: 80px;
     position: relative;
-    color: white;
+    font-family: term;
+    color: rgb(220, 220, 220);
 }
 
+/* Extend Bootstrap */
 .navbar-brand {
     height: 100%;
 }
-
 .navbar-toggle {
     margin-top: 20px;
     margin-bottom: 16px;
 }
-
 .navbar-nav li a {
     font-size: large;
     padding-top: 30px;
@@ -58,14 +61,20 @@ body {
 }
 
 /* Resume */
-.resume-info {
+.resume {
+    padding-top: 80px;
+}
+.resume .resume-info {
     font-size: x-large;
 }
+.resume .resume-img {
+    border-radius: 6px;
+}
 @media only screen and (max-device-width: 900px) {
-    .resume-info {
+    .resume {
+        padding-top: 0px;
+    }
+    .resume .resume-info {
         font-size: medium;
     }
-}
-.resume-img {
-    border-radius: 6px;
 }

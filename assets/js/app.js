@@ -3,6 +3,7 @@ $(document).ready(() => {
     /* Declarations */
     let info = {
         name: 'Jose Silva',
+        title: 'Programador Full stack',
         email: 'josepaulo.araujos@gmail.com',
         linkedin: 'www.linkedin.com/in/josesilva000',
         img: 'assets/img/person.png'
@@ -118,7 +119,7 @@ $(document).ready(() => {
     /* Append */
     $('#person').attr('src', info.img);
 
-    $('#resume-name').text(info.name);
+    $('#resume-name').text(info.name + ' - ' + info.title);
     $('#resume-img').attr('src', resume.img);
     $('#resume-info').text(resume.info);
     $('#resume-goal').text(resume.goal);
