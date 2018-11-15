@@ -38,7 +38,7 @@ $(document).ready(() => {
         details:
           "Separação de pedidos, conferencias de cargas e controle de docas.",
         img: "assets/img/empty.png",
-        style: ""
+        class: ""
       },
       {
         name: "Walmart.com",
@@ -49,7 +49,7 @@ $(document).ready(() => {
         details:
           "Conferência de produtos e pedidos, emissão de notas fiscais e afins.",
         img: "assets/img/company/walmart.png",
-        style: ""
+        class: ""
       },
       {
         name: "Walmart.com",
@@ -60,7 +60,7 @@ $(document).ready(() => {
         details:
           "Controle de Kpis, planejamento, criação de controles e relatórios, automação de controles utilizando: VBA, Dot.Net e Html, Excel Forms, Recordset e Functions, Acess Consultas, Formulários, Relatórios Avançados.",
         img: "assets/img/company/walmart.png",
-        style: ""
+        class: ""
       },
       {
         name: "G5 | Evercore",
@@ -71,7 +71,7 @@ $(document).ready(() => {
         details:
           "Criação e automatização de controles com VBA, Desenvolvimentos: Intranet em Asp.Net, Robôs de captura de informações em Python, App de acesso para clientes em Swift, Web em Jquery/Html/Css como view (lógica em backend), Server em NodeJs/Express com render Pug/Jade, DataBase Sql Server e MongoDB.",
         img: "assets/img/company/g5.png",
-        style: ""
+        class: ""
       }
     ],
     voluntary: [
@@ -84,7 +84,7 @@ $(document).ready(() => {
         details:
           "Desenvolvimento com Php e framework Laravel: Front: Html/Css Blade Template (Laravel); Back: Route/Controller/Migrations (Laravel); Desenvolvimento em Banco de dados com MySql: Modelagem DER, Criação de scripts sql, Consultas e afins.",
         img: "assets/img/company/uninove.png",
-        style: "width:50%"
+        class: "timeline-item-6"
       }
     ]
   };
@@ -219,7 +219,7 @@ $(document).ready(() => {
                 <div class="timeline-badge"><img class="img-responsive img-circle" src="${
                   element.img
                 }"></div>
-                <div class="timeline-panel" style="${element.style}">
+                <div class="timeline-panel ${element.class}">
                     <div class="timeline-heading">
                         <h4 class="timeline-title">${element.name}</h4>
                         <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> ${element.beginDt +
@@ -241,7 +241,7 @@ $(document).ready(() => {
                 <div class="timeline-badge"><img class="img-responsive img-circle" src="${
                   element.img
                 }"></div>
-                <div class="timeline-panel" style="${element.style}">
+                <div class="timeline-panel ${element.class}">
                     <div class="timeline-heading">
                         <h4 class="timeline-title">${element.name}</h4>
                         <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> ${element.beginDt +

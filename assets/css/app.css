@@ -305,3 +305,30 @@ body {
     bottom: 0px;
     left: 43px;
 }
+.timeline .timeline-item .timeline-item-8 {
+    width: 75%;
+}
+.timeline .timeline-item .timeline-item-6 {
+    width: 50%;
+}
+.timeline .timeline-item .timeline-item-4 {
+    width: 35%;
+}
+.timeline .timeline-item .timeline-item-2 {
+    width: 20%;
+}
+
+@media only screen and (max-device-width: 900px) {
+    .timeline .timeline-item .timeline-item-8 {
+        width: 100%;
+    }
+    .timeline .timeline-item .timeline-item-6 {
+        width: 100%;
+    }
+    .timeline .timeline-item .timeline-item-4 {
+        width: 100%;
+    }
+    .timeline .timeline-item .timeline-item-2 {
+        width: 100%;
+    }
+}
