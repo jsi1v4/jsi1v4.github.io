@@ -98,6 +98,9 @@ body {
     padding: 10% 15%;
     background-color: rgb(10, 10, 10, 0.7)
 }
+.portfolio img {
+    filter: brightness(90%);
+}
 .portfolio-info {
     font-size: x-large;
     margin: 5% auto;
@@ -190,6 +193,9 @@ body {
 .timeline .timeline-item {
   margin-bottom: 20px;
   position: relative;
+}
+.timeline .timeline-body span {
+    font-size: 22px;  
 }
 .timeline .timeline-item .timeline-badge {
   color: #fff;
