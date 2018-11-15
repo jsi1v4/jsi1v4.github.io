@@ -262,20 +262,24 @@ $(document).ready(() => {
   let itemsLi = '';
   portfolio.items.forEach(element => {
 
-    element.img.forEach(img => {
+    for (let i = 0; i < element.img.length; i++) { 
       itemsLi += `
-        <img class="img-responsive img-rounded" src="${img}">
-      `
-    });
+        <div class="item ${(i === 0) ? 'active' : ''}">
+          <img class="img-responsive img-rounded" src="${element.img[i]}">
+        </div>
+      `;
+    }
 
     $('#portfolio-items').append(
       `
         <div class="col-xs-12 col-md-4">
           <h3>${element.name}</h3>
-          <span>${element.details}</span>
-          <div>
-            ${itemsLi}
+          <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+              ${itemsLi}
+            </div>
           </div>
+          <p>${element.details}</p>
         </div>
       `
     );
@@ -288,6 +292,11 @@ $(document).ready(() => {
   $("body").scrollspy({
     target: "#main-menu"
   });
-  $('[data-spy="scroll"]').each(() => $(this).scrollspy("refresh"));
+  $('[data-spy="scroll"]').each(function() { $(this).scrollspy("refresh") });
+
+  /* Carousel */
+  $('.carousel').each(function() {
+    $(this).carousel();
+  });
 
 });
