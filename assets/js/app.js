@@ -299,9 +299,12 @@ $(document).ready(() => {
     $(this).carousel();
   });
 
-  /* Loader */
+  /* Loaders.Css */
   $('.loader-inner').loaders();
   $(document).ready(function() {
     setInterval(() => {$('#loader').hide();}, 2000);
   });
+
+  /* Wow.Js */
+  new WOW().init();
 });
