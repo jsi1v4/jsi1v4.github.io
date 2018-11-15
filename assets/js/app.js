@@ -301,9 +301,8 @@ $(document).ready(() => {
 
   /* Loaders.Css */
   $('.loader-inner').loaders();
-  $(document).ready(function() {
-    setInterval(() => {$('#loader').hide();}, 2000);
-  });
+  // Loader page hide after 2sec
+  setInterval(() => {$('#loader').hide();}, 2000);
 
   /* Wow.Js */
   new WOW().init();
