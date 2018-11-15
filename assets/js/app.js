@@ -257,6 +257,32 @@ $(document).ready(() => {
         `);
   });
 
+  $('#portfolio-info').text(portfolio.info);
+
+  let itemsLi = '';
+  portfolio.items.forEach(element => {
+
+    element.img.forEach(img => {
+      itemsLi += `
+        <img class="img-responsive img-rounded" src="${img}">
+      `
+    });
+
+    $('#portfolio-items').append(
+      `
+        <div class="col-xs-12 col-md-4">
+          <h3>${element.name}</h3>
+          <span>${element.details}</span>
+          <div>
+            ${itemsLi}
+          </div>
+        </div>
+      `
+    );
+
+    itemsLi = '';
+  });
+
 
   /* ScrollSpy */
   $("body").scrollspy({
