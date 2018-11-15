@@ -274,12 +274,12 @@ $(document).ready(() => {
       `
         <div class="col-xs-12 col-md-4">
           <h3>${element.name}</h3>
-          <div class="carousel slide" data-ride="carousel">
+          <div class="carousel slide extra-margin-top" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               ${itemsLi}
             </div>
           </div>
-          <p>${element.details}</p>
+          <p class="extra-margin-top">${element.details}</p>
         </div>
       `
     );
