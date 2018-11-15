@@ -39,6 +39,13 @@ body {
     margin-top: -50px;
     margin-left: -100px;
 }
+@media only screen and (max-device-width: 900px) {
+    .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+    }
+}
 
 /* Extend Font Awesome */
 .fas-margin {
