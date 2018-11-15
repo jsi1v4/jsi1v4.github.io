@@ -1,5 +1,10 @@
 $(document).ready(() => {
-  /* Declarations */
+  /*-------------------------------------------------------------------------
+    Personal
+    License: MIT
+    Author: Joseph
+  */
+  // Declarations
   let info = {
     name: "Jose Silva",
     title: "Analista Desenvolvedor Júnior",
@@ -203,14 +208,16 @@ $(document).ready(() => {
     ]
   };
 
-  /* Append */
+  // Personal Infos
   $("#person").attr("src", info.img);
 
+  // Resume
   $("#resume-name").text(info.name + " - " + info.title);
   $("#resume-img").attr("src", resume.img);
   $("#resume-info").text(resume.info);
   $("#resume-goal").text(resume.goal);
 
+  // Professional
   $("#professional-info").text(professional.info);
 
   professional.experience.forEach(element => {
@@ -257,6 +264,7 @@ $(document).ready(() => {
         `);
   });
 
+  // Portfolio
   $('#portfolio-info').text(portfolio.info);
 
   let itemsLi = '';
@@ -288,18 +296,27 @@ $(document).ready(() => {
   });
 
 
-  /* ScrollSpy */
+  /*-------------------------------------------------------------------------
+    Bootstrap
+    License: MIT
+    Author: Team Bootstrap (https://getbootstrap.com/docs/3.3/)
+  */
+  // ScrollSpy
   $("body").scrollspy({
     target: "#main-menu"
   });
   $('[data-spy="scroll"]').each(function() { $(this).scrollspy("refresh") });
 
-  /* Carousel */
+  // Carousel
   $('.carousel').each(function() {
     $(this).carousel();
   });
 
-  /* Loaders.Css */
+  /*-------------------------------------------------------------------------
+    Loaders.Css
+    License: MIT
+    Author: Connor Atherton (https://connoratherton.com/loaders)
+  */
   $('.loader-inner').loaders();
   // Loader page hide after 2sec
   setInterval(() => {$('#loader').hide();}, 2000);
