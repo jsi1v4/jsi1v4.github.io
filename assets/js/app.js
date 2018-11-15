@@ -299,4 +299,9 @@ $(document).ready(() => {
     $(this).carousel();
   });
 
+  /* Loader */
+  $('.loader-inner').loaders();
+  $(document).ready(function() {
+    setInterval(() => {$('#loader').hide();}, 2000);
+  });
 });
