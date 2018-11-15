@@ -307,4 +307,6 @@ $(document).ready(() => {
 
   /* Wow.Js */
   new WOW().init();
+  // Add effect in sections
+  $('.wow').addClass('fadeIn');
 });
