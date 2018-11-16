@@ -97,6 +97,9 @@ body {
     padding: 10% 15%;
     background-color: rgb(10, 10, 10, 0.7);
 }
+.resume .resume-name {
+    margin: 7% auto;
+}
 .resume .resume-info {
     font-size: x-large;
 }
@@ -107,6 +110,9 @@ body {
     .resume {
         padding: 10% 5%;
         margin-top: 50px;
+    }
+    .resume .resume-name {
+        margin: auto;
     }
     .resume .resume-info {
         font-size: medium;
