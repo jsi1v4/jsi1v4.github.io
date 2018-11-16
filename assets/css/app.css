@@ -16,7 +16,14 @@
     padding-bottom: 30px;
 }
 .extra-margin-top {
-    margin-top: 16px;
+    margin-top: 25px;
+}
+.media-body span {
+    font-size: larger;
+}
+.media-object {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
 /*-------------------------------------------------------------------------
@@ -162,9 +169,16 @@ body {
     padding: 5% 15%;
     background-color: rgb(10, 10, 10, 0.7)
 }
+.skills-info {
+    font-size: x-large;
+    margin: 2% auto;
+}
 @media only screen and (max-device-width: 900px) {
     .skills {
         padding: 5% 5%;
+    }
+    .skills-info {
+        font-size: medium;
     }
 }
 

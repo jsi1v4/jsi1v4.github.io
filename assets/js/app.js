@@ -152,7 +152,7 @@ $(document).ready(() => {
     ]
   };
   let skills = {
-    info: "",
+    info: "Abaixo segue minhas principais qualificações e conhecimentos.",
     formation: [
       {
         name: "Análise e Desenvolvimento de Sistemas",
@@ -170,22 +170,21 @@ $(document).ready(() => {
                     Estrutura de dados, Web e afins.
                 `,
         img: "assets/img/company/uninove.png"
-      },
+      }
+    ],
+    extra: [
       {
         name: "Hardware e Redes",
-        nivel: "Tecnico",
-        details: `
-                    
-                `,
-        img: ""
+        nivel: "Técnico",
+        details:
+          "Infraestrutura de redes, protocolos de rede, montagem e manutenção de microcomputadores, Linux e Windows Server.",
+        img: "assets/img/empty.png"
       },
       {
         name: "Tec. em Informática",
-        nivel: "Tecnico",
-        details: `
-                    
-                `,
-        img: ""
+        nivel: "Técnico",
+        details: "Administração, instalação e manutenção de sistemas operacionais, Microsoft-Office e ferramentas administrativas.",
+        img: "assets/img/empty.png"
       }
     ],
     abilities: [
@@ -265,20 +264,19 @@ $(document).ready(() => {
   });
 
   // Portfolio
-  $('#portfolio-info').text(portfolio.info);
+  $("#portfolio-info").text(portfolio.info);
 
-  let itemsLi = '';
+  let itemsLi = "";
   portfolio.items.forEach(element => {
-
-    for (let i = 0; i < element.img.length; i++) { 
+    for (let i = 0; i < element.img.length; i++) {
       itemsLi += `
-        <div class="item ${(i === 0) ? 'active' : ''}">
+        <div class="item ${i === 0 ? "active" : ""}">
           <img class="img-responsive img-rounded" src="${element.img[i]}">
         </div>
       `;
     }
 
-    $('#portfolio-items').append(
+    $("#portfolio-items").append(
       `
         <div class="col-xs-12 col-md-4">
           <h3>${element.name}</h3>
@@ -292,9 +290,41 @@ $(document).ready(() => {
       `
     );
 
-    itemsLi = '';
+    itemsLi = "";
   });
 
+  // Skills
+  $('#skills-info').text(skills.info);
+
+  skills.formation.forEach(element => {
+    $('#skills-formation').append(`
+      <div class="media">
+        <div class="media-left">
+          <img class="media-object" src="${element.img}">
+        </div>
+        <div class="media-body">
+          <h3 class="media-heading">${element.name}</h3>
+          <h4>${element.nivel}</h4>
+          <span>${element.details}</span>
+        </div>
+      </div>
+    `);
+  });
+
+  skills.extra.forEach(element => {
+    $('#skills-extra').append(`
+      <div class="media">
+        <div class="media-left">
+          <img class="media-object" src="${element.img}">
+        </div>
+        <div class="media-body">
+          <h3 class="media-heading">${element.name}</h3>
+          <h4>${element.nivel}</h4>
+          <span>${element.details}</span>
+        </div>
+      </div>
+    `);
+  });
 
   /*-------------------------------------------------------------------------
     Bootstrap
@@ -305,10 +335,12 @@ $(document).ready(() => {
   $("body").scrollspy({
     target: "#main-menu"
   });
-  $('[data-spy="scroll"]').each(function() { $(this).scrollspy("refresh") });
+  $('[data-spy="scroll"]').each(function() {
+    $(this).scrollspy("refresh");
+  });
 
   // Carousel
-  $('.carousel').each(function() {
+  $(".carousel").each(function() {
     $(this).carousel();
   });
 
@@ -317,12 +349,14 @@ $(document).ready(() => {
     License: MIT
     Author: Connor Atherton (https://connoratherton.com/loaders)
   */
-  $('.loader-inner').loaders();
+  $(".loader-inner").loaders();
   // Loader page hide after 2sec
-  setInterval(() => {$('#loader').hide();}, 2000);
+  setInterval(() => {
+    $("#loader").hide();
+  }, 2000);
 
   /* Wow.Js */
   new WOW().init();
   // Add effect in sections
-  $('.wow').addClass('fadeIn');
+  $(".wow").addClass("fadeIn");
 });
