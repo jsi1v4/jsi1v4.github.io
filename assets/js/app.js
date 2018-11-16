@@ -355,7 +355,11 @@ $(document).ready(() => {
     $("#loader").hide();
   }, 2000);
 
-  /* Wow.Js */
+  /*-------------------------------------------------------------------------
+    Wow.Js
+    License: MIT
+    Author: Matthieu Aussaguel (https://wowjs.uk/)
+  */
   new WOW().init();
   // Add effect in sections
   $(".wow").addClass("fadeIn");
