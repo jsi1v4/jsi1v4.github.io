@@ -1,0 +1,25 @@
+{
+  "short_name": "jsi1v4",
+  "name": "jsi1v4.github.io",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/jsi1v4/jsi1v4/master/assets/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/jsi1v4/jsi1v4/master/assets/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/jsi1v4/jsi1v4/master/assets/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#2C2C2C"
+}

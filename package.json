@@ -1,0 +1,30 @@
+{
+  "name": "jsi1v4.github.io",
+  "version": "2.0.0",
+  "description": "Joseph bio webpage.",
+  "main": "src/index.js",
+  "repository": "https://github.com/jsi1v4/jsi1v4.github.io.git",
+  "author": "Jsi1v4 <me@jsi1v4.dev>",
+  "license": "GPL-3.0",
+  "private": false,
+  "scripts": {
+    "start": "serve src",
+    "build": "babel src --out-dir dist --copy-files",
+    "postbuild": "cp node_modules/@babel/polyfill/dist/polyfill.min.js dist/"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/polyfill": "^7.12.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/preset-env": "^7.12.7",
+    "serve": "^11.3.2"
+  },
+  "browserslist": "> 0.25%, not dead",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
