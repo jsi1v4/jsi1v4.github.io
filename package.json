@@ -10,7 +10,8 @@
   "scripts": {
     "start": "serve src",
     "build": "babel src --out-dir dist --copy-files",
-    "postbuild": "cp node_modules/@babel/polyfill/dist/polyfill.min.js dist/"
+    "postbuild": "cp node_modules/@babel/polyfill/dist/polyfill.min.js dist/",
+    "publish": "git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "@babel/core": "^7.12.9",
