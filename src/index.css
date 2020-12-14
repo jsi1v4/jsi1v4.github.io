@@ -30,6 +30,15 @@ body {
 }
 
 
+/* ### Theme ### */
+:root {
+  --light-bg-color: #FAFAFA;
+  --light-fg-color: #2C2C2C;
+  --dark-bg-color: #2C2C2C;
+  --dark-fg-color: #FAFAFA;
+}
+
+
 /* ### Animations ### */
 @keyframes fadein {
   from {
@@ -59,12 +68,12 @@ body {
 
 @keyframes lightmode {
   from {
-    background-color: #2C2C2C;
-    color: #fff;
+    background-color: var(--dark-bg-color);
+    color: var(--dark-fg-color);
   }
   to {
-    background-color: #fff;
-    color: #2C2C2C;
+    background-color: var(--light-bg-color);
+    color: var(--light-fg-color);
   }
 }
 
@@ -75,12 +84,12 @@ body {
 
 @keyframes darkmode {
   from {
-    background-color: #fff;
-    color: #2C2C2C;
+    background-color: var(--light-bg-color);
+    color: var(--light-fg-color);
   }
   to {
-    background-color: #2C2C2C;
-    color: #fff;
+    background-color: var(--dark-bg-color);
+    color: var(--dark-fg-color);
   }
 }
 
