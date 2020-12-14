@@ -1,6 +1,6 @@
 {
   "name": "jsi1v4.github.io",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Joseph bio webpage.",
   "main": "src/index.js",
   "repository": "https://github.com/jsi1v4/jsi1v4.github.io.git",
@@ -11,7 +11,7 @@
     "start": "serve src",
     "build": "babel src --out-dir dist --copy-files",
     "postbuild": "cp node_modules/@babel/polyfill/dist/polyfill.min.js dist/",
-    "publish": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "gh-pages -d dist/"
   },
   "dependencies": {
     "@babel/core": "^7.12.9",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/preset-env": "^7.12.7",
+    "gh-pages": "^3.1.0",
     "serve": "^11.3.2"
   },
   "browserslist": "> 0.25%, not dead",
