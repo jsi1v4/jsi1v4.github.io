@@ -11,7 +11,8 @@
     "start": "serve src",
     "build": "babel src --out-dir dist --copy-files",
     "postbuild": "cp node_modules/@babel/polyfill/dist/polyfill.min.js dist/",
-    "deploy": "gh-pages -d dist/"
+    "deploy": "gh-pages -d dist/",
+    "postdeploy": "cp CNAME dist/"
   },
   "dependencies": {
     "@babel/core": "^7.12.9",
