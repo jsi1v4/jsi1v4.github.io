@@ -1,22 +1,11 @@
 "use strict";
 
-function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 /* ### Global ### */
+var BRANCH = 'master';
 var PROTOCOL = window.location.protocol;
 var PAGELEN = document.querySelectorAll('[id^="page"]').length - 1;
 var PAGE = 0;
@@ -57,22 +46,6 @@ function _get() {
   return _get.apply(this, arguments);
 }
 
-function arrFromTable(data) {
-  var remap = data.split(/\r\n/g).map(function (t) {
-    return t.split(' | ');
-  });
-
-  var _remap = _toArray(remap),
-      header = _remap[0],
-      separator = _remap[1],
-      rows = _remap.slice(2);
-
-  return {
-    header: header,
-    rows: rows
-  };
-}
-
 function languageColor(language) {
   var colors = {
     JavaScript: '#f1e05a',
@@ -86,6 +59,17 @@ function languageColor(language) {
   };
   return language ? colors[language] || colors.Default : colors.None;
 }
+
+var fillElement = function fillElement(id, collection, handle) {
+  var listElement = document.querySelector(id);
+  var anchor = listElement.firstElementChild;
+  collection.forEach(function (item) {
+    var el = anchor.cloneNode(true);
+    handle(el, item);
+    listElement.appendChild(el);
+  });
+  anchor.remove();
+};
 /* ### Data ### */
 
 
@@ -138,10 +122,7 @@ function _getProjects() {
 
           case 2:
             data = _context3.sent;
-
-            if (data) {
-              onSuccess(JSON.parse(data));
-            }
+            if (data) onSuccess(JSON.parse(data));
 
           case 4:
           case "end":
@@ -165,7 +146,7 @@ function _getResume() {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return get('raw.githubusercontent.com/jsi1v4/jsi1v4/master/topics/resume.md');
+            return get("raw.githubusercontent.com/jsi1v4/jsi1v4/".concat(BRANCH, "/topics/resume.md"));
 
           case 2:
             data = _context4.sent;
@@ -187,37 +168,26 @@ function getLinks(_x6) {
 
 function _getLinks() {
   _getLinks = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(onSuccess) {
-    var data, _arrFromTable, header, rows, links, i, metadata, title, text, href;
-
+    var data, rows, links;
     return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return get('raw.githubusercontent.com/jsi1v4/jsi1v4/master/topics/links.md');
+            return get("raw.githubusercontent.com/jsi1v4/jsi1v4/".concat(BRANCH, "/topics/links.md"));
 
           case 2:
             data = _context5.sent;
 
             if (data) {
-              _arrFromTable = arrFromTable(data), header = _arrFromTable.header, rows = _arrFromTable.rows;
-              links = [];
-
-              for (i = 0; i < header.length; i++) {
-                metadata = rows[0][i].match(/[\[\(](.*?)[\]\)]/g);
-
-                if (metadata) {
-                  title = header[i];
-                  text = metadata[0].replace(/[\[\]]/g, '');
-                  href = metadata[1].replace(/[\(\)]/g, '');
-                  links.push({
-                    title: title,
-                    text: text,
-                    href: href
-                  });
-                }
-              }
-
+              rows = data.split(/\r\n/g);
+              rows.pop();
+              links = rows.map(function (a) {
+                return {
+                  icon: a.match(/\[(.+)\]/g)[0].slice(1, -1),
+                  href: a.match(/\((.+)\)/g)[0].slice(1, -1)
+                };
+              });
               onSuccess(links);
             }
 
@@ -239,38 +209,28 @@ function getInterests(_x7) {
 
 function _getInterests() {
   _getInterests = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(onSuccess) {
-    var data, _arrFromTable2, header, rows, links, i, metadata, title, img, href;
-
+    var data, rows, interests;
     return regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             _context6.next = 2;
-            return get('raw.githubusercontent.com/jsi1v4/jsi1v4/master/topics/interests.md');
+            return get("raw.githubusercontent.com/jsi1v4/jsi1v4/".concat(BRANCH, "/topics/interests.md"));
 
           case 2:
             data = _context6.sent;
 
             if (data) {
-              _arrFromTable2 = arrFromTable(data), header = _arrFromTable2.header, rows = _arrFromTable2.rows;
-              links = [];
-
-              for (i = 0; i < header.length; i++) {
-                metadata = rows[0][i].match(/[\(](.*?)[\)]/g);
-
-                if (metadata) {
-                  title = header[i];
-                  img = metadata[0].replace(/[\(\)]/g, '');
-                  href = metadata[1].replace(/[\(\)]/g, '');
-                  links.push({
-                    title: title,
-                    img: img,
-                    href: href
-                  });
-                }
-              }
-
-              onSuccess(links);
+              rows = data.split(/\r\n/g);
+              rows.pop();
+              interests = rows.map(function (a) {
+                return {
+                  img: a.match(/(\[?\(.+\)\])/g)[0].slice(1, -2),
+                  title: a.match(/(\[\w+\])/g)[0].slice(1, -1),
+                  href: a.match(/(\)\]\(.+\))/g)[0].slice(3, -1)
+                };
+              });
+              onSuccess(interests);
             }
 
           case 4:
@@ -315,26 +275,10 @@ function goDown() {
 }
 
 function setScrollKeybind() {
-  // let startScreenY = 0;
-  // document.ontouchstart = (e) => {
-  //   e.preventDefault();
-  //   startScreenY = e.changedTouches[0].screenY;
-  // };
-  // document.ontouchend = (e) => {
-  //   e.preventDefault();
-  //   const endScreenY = e.changedTouches[0].screenY;
-  //   if (startScreenY < endScreenY) { // to up
-  //     goUp();
-  //   } else { // to down
-  //     goDown();
-  //   }
-  // };
   document.onwheel = function (e) {
     if (e.deltaY < 0) {
-      // to up
       goUp();
     } else {
-      // to down
       goDown();
     }
   };
@@ -433,17 +377,18 @@ function playUp() {
 
 function changeProfile(_ref) {
   var avatar_url = _ref.avatar_url,
-      name = _ref.name;
+      name = _ref.name,
+      bio = _ref.bio;
   document.querySelector('#profile-img').setAttribute('src', avatar_url);
   document.querySelector('#profile-img').setAttribute('title', name);
   document.querySelector('#profile-img').classList.add('fadein');
-  document.querySelector('#profile-caption').innerHTML = "I'm ".concat(name);
+  document.querySelector('#profile-name').innerHTML = "I'm ".concat(name);
+  document.querySelector('#profile-bio').innerHTML = bio;
 }
 
 function changeProfileError() {
-  document.querySelector('#profile-img').setAttribute('src', 'https://raw.githubusercontent.com/jsi1v4/jsi1v4/master/assets/error.png');
   document.querySelector('#profile-img').classList.add('fadein');
-  document.querySelector('#profile-caption').innerHTML = 'Opss... we had a problem!';
+  document.querySelector('#profile-title').innerHTML = 'Opss... we had a problem! Please refresh page.';
 }
 
 function changePhotoState(fixed) {
@@ -459,46 +404,30 @@ function changeResume(text) {
 }
 
 function changeLinks(links) {
-  var list = document.querySelector('#contact-list');
-  var item = list.firstElementChild;
-  links.forEach(function (t) {
-    var newItem = item.cloneNode(true);
-    newItem.querySelector('#contact-list-link').setAttribute('href', t.href);
-    newItem.querySelector('#contact-list-icon').className = "contact__icon fa fa-".concat(t.title);
-    newItem.querySelector('#contact-list-text').innerHTML = t.text;
-    list.appendChild(newItem);
+  fillElement('#contact-list', links, function (element, link) {
+    element.querySelector('#contact-list-icon').className = "contact__icon fa fa-".concat(link.icon);
+    element.querySelector('#contact-list-link').setAttribute('title', link.icon);
+    element.querySelector('#contact-list-link').setAttribute('href', link.href);
   });
-  item.remove();
 }
 
 function changeInterests(interests) {
-  var list = document.querySelector('#about-list');
-  var item = list.firstElementChild;
-  interests.forEach(function (t) {
-    var newItem = item.cloneNode(true);
-    newItem.querySelector('#about-list-link').setAttribute('href', t.href);
-    newItem.querySelector('#about-list-title').innerHTML = t.title;
-    newItem.querySelector('#about-list-img').setAttribute('src', t.img);
-    newItem.querySelector('#about-list-img').setAttribute('title', t.title);
-    list.appendChild(newItem);
+  fillElement('#about-list', interests, function (element, int) {
+    element.querySelector('#about-list-link').setAttribute('href', int.href);
+    element.querySelector('#about-list-item').setAttribute('src', int.img);
+    element.querySelector('#about-list-item').setAttribute('title', int.title);
   });
-  item.remove();
 }
 
 function changeProjects(projects) {
-  var list = document.querySelector('#projects-list');
-  var item = list.firstElementChild;
-  projects.forEach(function (t) {
-    var newItem = item.cloneNode(true);
-    newItem.querySelector('#projects-repo-link').setAttribute('href', t.html_url);
-    newItem.querySelector('#projects-repo-title').innerHTML = t.name;
-    newItem.querySelector('#projects-repo-description').innerHTML = t.description;
-    newItem.querySelector('#projects-repo-lang').innerHTML = t.language;
-    newItem.querySelector('#projects-repo-stars').innerHTML = t.stargazers_count;
-    newItem.querySelector('#projects-repo-langcolor').style.backgroundColor = languageColor(t.language);
-    list.appendChild(newItem);
+  fillElement('#projects-list', projects, function (element, proj) {
+    element.querySelector('#projects-repo-link').setAttribute('href', proj.html_url);
+    element.querySelector('#projects-repo-title').innerHTML = proj.name;
+    element.querySelector('#projects-repo-description').innerHTML = proj.description;
+    element.querySelector('#projects-repo-lang').innerHTML = proj.language;
+    element.querySelector('#projects-repo-stars').innerHTML = proj.stargazers_count;
+    element.querySelector('#projects-repo-langcolor').style.backgroundColor = languageColor(proj.language);
   });
-  item.remove();
 }
 /* ### Run ### */
 
@@ -522,9 +451,9 @@ function _main() {
             return getProfile(changeProfile, changeProfileError);
 
           case 5:
+            getLinks(changeLinks);
             getResume(changeResume);
             getInterests(changeInterests);
-            getLinks(changeLinks);
             getProjects(changeProjects);
             setScrollKeybind();
 
