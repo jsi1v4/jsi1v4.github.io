@@ -1,9 +1,9 @@
 /* ### Global ### */
+const BRANCH = 'master';
 const PROTOCOL = window.location.protocol;
 const PAGELEN = document.querySelectorAll('[id^="page"]').length - 1;
 let PAGE = 0;
 let THEME = 'dark';
-
 
 /* ### Utils ### */
 async function get(url) {
@@ -11,12 +11,6 @@ async function get(url) {
   if (response.ok) {
     return response.text();
   }
-}
-
-function arrFromTable(data) {
-  const remap = data.split(/\r\n/g).map(t => t.split(' | '));
-  const [header, separator, ...rows] = remap;
-  return { header, rows };
 }
 
 function languageColor(language) {
@@ -28,11 +22,21 @@ function languageColor(language) {
     Shell: '#89e051',
     Clojure: '#db5855',
     Default: '#e34c26',
-    None: '#fff'
+    None: '#fff',
   };
-  return language ? (colors[language] || colors.Default) : colors.None;
+  return language ? colors[language] || colors.Default : colors.None;
 }
 
+const fillElement = (id, collection, handle) => {
+  const listElement = document.querySelector(id);
+  const anchor = listElement.firstElementChild;
+  collection.forEach((item) => {
+    const el = anchor.cloneNode(true);
+    handle(el, item);
+    listElement.appendChild(el);
+  });
+  anchor.remove();
+};
 
 /* ### Data ### */
 async function getProfile(onSuccess, onError) {
@@ -45,53 +49,49 @@ async function getProfile(onSuccess, onError) {
 }
 
 async function getProjects(onSuccess) {
-  const data = await get('api.github.com/users/jsi1v4/repos?per_page=6&sort=pushed');
-  if (data) {
-    onSuccess(JSON.parse(data));
-  }
+  const data = await get(
+    'api.github.com/users/jsi1v4/repos?per_page=6&sort=pushed'
+  );
+  if (data) onSuccess(JSON.parse(data));
 }
 
 async function getResume(onSuccess) {
-  const data = await get('raw.githubusercontent.com/jsi1v4/jsi1v4/master/topics/resume.md');
+  const data = await get(
+    `raw.githubusercontent.com/jsi1v4/jsi1v4/${BRANCH}/topics/resume.md`
+  );
   if (data) onSuccess(data);
 }
 
 async function getLinks(onSuccess) {
-  const data = await get('raw.githubusercontent.com/jsi1v4/jsi1v4/master/topics/links.md');
+  const data = await get(
+    `raw.githubusercontent.com/jsi1v4/jsi1v4/${BRANCH}/topics/links.md`
+  );
   if (data) {
-    const { header, rows } = arrFromTable(data);
-    const links = [];
-    for (let i = 0; i < header.length; i++) {
-      const metadata = rows[0][i].match(/[\[\(](.*?)[\]\)]/g);
-      if (metadata) {
-        const title = header[i];
-        const text = metadata[0].replace(/[\[\]]/g, '');
-        const href = metadata[1].replace(/[\(\)]/g, '');
-        links.push({ title, text, href });
-      }
-    }
+    const rows = data.split(/\r\n/g);
+    rows.pop();
+    const links = rows.map((a) => ({
+      icon: a.match(/\[(.+)\]/g)[0].slice(1, -1),
+      href: a.match(/\((.+)\)/g)[0].slice(1, -1),
+    }));
     onSuccess(links);
   }
 }
 
 async function getInterests(onSuccess) {
-  const data = await get('raw.githubusercontent.com/jsi1v4/jsi1v4/master/topics/interests.md');
+  const data = await get(
+    `raw.githubusercontent.com/jsi1v4/jsi1v4/${BRANCH}/topics/interests.md`
+  );
   if (data) {
-    const { header, rows } = arrFromTable(data);
-    const links = [];
-    for (let i = 0; i < header.length; i++) {
-      const metadata = rows[0][i].match(/[\(](.*?)[\)]/g);
-      if (metadata) {
-        const title = header[i];
-        const img = metadata[0].replace(/[\(\)]/g, '');
-        const href = metadata[1].replace(/[\(\)]/g, '');
-        links.push({ title, img, href });
-      }
-    }
-    onSuccess(links);
+    const rows = data.split(/\r\n/g);
+    rows.pop();
+    const interests = rows.map((a) => ({
+      img: a.match(/(\[?\(.+\)\])/g)[0].slice(1, -2),
+      title: a.match(/(\[\w+\])/g)[0].slice(1, -1),
+      href: a.match(/(\)\]\(.+\))/g)[0].slice(3, -1),
+    }));
+    onSuccess(interests);
   }
 }
-
 
 /* ### Navigation ### */
 function goTop() {
@@ -122,28 +122,13 @@ function goDown() {
 }
 
 function setScrollKeybind() {
-  // let startScreenY = 0;
-  // document.ontouchstart = (e) => {
-  //   e.preventDefault();
-  //   startScreenY = e.changedTouches[0].screenY;
-  // };
-  // document.ontouchend = (e) => {
-  //   e.preventDefault();
-  //   const endScreenY = e.changedTouches[0].screenY;
-  //   if (startScreenY < endScreenY) { // to up
-  //     goUp();
-  //   } else { // to down
-  //     goDown();
-  //   }
-  // };
-
   document.onwheel = (e) => {
-    if (e.deltaY < 0) { // to up
+    if (e.deltaY < 0) {
       goUp();
-    } else { // to down
+    } else {
       goDown();
     }
-  }
+  };
 
   document.onkeydown = (e) => {
     switch (e.keyCode) {
@@ -165,20 +150,19 @@ function setScrollKeybind() {
         e.ctrlKey && setLightmode();
         break;
     }
-  }
+  };
 }
-
 
 /* ### DOM changes ### */
 function initDOM() {
   document.querySelector('#profile-img').onclick = () => {
     goTop();
     playUp();
-  }
+  };
   document.querySelector('#theme-toggle').onclick = () => {
     toggleTheme();
     playToggle();
-  }
+  };
 }
 
 function initTheme() {
@@ -207,12 +191,15 @@ function toggleTheme() {
 
 function setDarkmode() {
   document.body.className = 'darkmode';
-  document.querySelector('#theme-toggle-icon').className = `nav__btn__icon fa fa-moon-o`;
+  document.querySelector(
+    '#theme-toggle-icon'
+  ).className = `nav__btn__icon fa fa-moon-o`;
 }
 
 function setLightmode() {
   document.body.className = 'lightmode';
-  document.querySelector('#theme-toggle-icon').className = 'nav__btn__icon fa fa-sun-o';
+  document.querySelector('#theme-toggle-icon').className =
+    'nav__btn__icon fa fa-sun-o';
 }
 
 function playToggle() {
@@ -223,24 +210,29 @@ function playUp() {
   document.querySelector('#sound-up').play();
 }
 
-function changeProfile({ avatar_url, name }) {
+function changeProfile({ avatar_url, name, bio }) {
   document.querySelector('#profile-img').setAttribute('src', avatar_url);
   document.querySelector('#profile-img').setAttribute('title', name);
   document.querySelector('#profile-img').classList.add('fadein');
-  document.querySelector('#profile-caption').innerHTML = `I'm ${name}`;
+  document.querySelector('#profile-name').innerHTML = `I'm ${name}`;
+  document.querySelector('#profile-bio').innerHTML = bio;
 }
 
 function changeProfileError() {
-  document.querySelector('#profile-img').setAttribute('src', 'https://raw.githubusercontent.com/jsi1v4/jsi1v4/master/assets/error.png');
   document.querySelector('#profile-img').classList.add('fadein');
-  document.querySelector('#profile-caption').innerHTML = 'Opss... we had a problem!';
+  document.querySelector('#profile-title').innerHTML =
+    'Opss... we had a problem! Please refresh page.';
 }
 
 function changePhotoState(fixed) {
   if (fixed) {
-    document.querySelector('#profile-img').classList.add('intro__photo__img--fixed');
+    document
+      .querySelector('#profile-img')
+      .classList.add('intro__photo__img--fixed');
   } else {
-    document.querySelector('#profile-img').classList.remove('intro__photo__img--fixed');
+    document
+      .querySelector('#profile-img')
+      .classList.remove('intro__photo__img--fixed');
   }
 }
 
@@ -249,48 +241,41 @@ function changeResume(text) {
 }
 
 function changeLinks(links) {
-  const list = document.querySelector('#contact-list');
-  const item = list.firstElementChild;
-  links.forEach(t => {
-    const newItem = item.cloneNode(true);
-    newItem.querySelector('#contact-list-link').setAttribute('href', t.href);
-    newItem.querySelector('#contact-list-icon').className = `contact__icon fa fa-${t.title}`;
-    newItem.querySelector('#contact-list-text').innerHTML = t.text;
-    list.appendChild(newItem);
+  fillElement('#contact-list', links, (element, link) => {
+    element.querySelector(
+      '#contact-list-icon'
+    ).className = `contact__icon fa fa-${link.icon}`;
+    element
+      .querySelector('#contact-list-link')
+      .setAttribute('title', link.icon);
+    element.querySelector('#contact-list-link').setAttribute('href', link.href);
   });
-  item.remove();
 }
 
 function changeInterests(interests) {
-  const list = document.querySelector('#about-list');
-  const item = list.firstElementChild;
-  interests.forEach(t => {
-    const newItem = item.cloneNode(true);
-    newItem.querySelector('#about-list-link').setAttribute('href', t.href);
-    newItem.querySelector('#about-list-title').innerHTML = t.title;
-    newItem.querySelector('#about-list-img').setAttribute('src', t.img);
-    newItem.querySelector('#about-list-img').setAttribute('title', t.title);
-    list.appendChild(newItem);
+  fillElement('#about-list', interests, (element, int) => {
+    element.querySelector('#about-list-link').setAttribute('href', int.href);
+    element.querySelector('#about-list-item').setAttribute('src', int.img);
+    element.querySelector('#about-list-item').setAttribute('title', int.title);
   });
-  item.remove();
 }
 
 function changeProjects(projects) {
-  const list = document.querySelector('#projects-list');
-  const item = list.firstElementChild;
-  projects.forEach(t => {
-    const newItem = item.cloneNode(true);
-    newItem.querySelector('#projects-repo-link').setAttribute('href', t.html_url);
-    newItem.querySelector('#projects-repo-title').innerHTML = t.name;
-    newItem.querySelector('#projects-repo-description').innerHTML = t.description;
-    newItem.querySelector('#projects-repo-lang').innerHTML = t.language;
-    newItem.querySelector('#projects-repo-stars').innerHTML = t.stargazers_count;
-    newItem.querySelector('#projects-repo-langcolor').style.backgroundColor = languageColor(t.language);
-    list.appendChild(newItem);
+  fillElement('#projects-list', projects, (element, proj) => {
+    element
+      .querySelector('#projects-repo-link')
+      .setAttribute('href', proj.html_url);
+    element.querySelector('#projects-repo-title').innerHTML = proj.name;
+    element.querySelector('#projects-repo-description').innerHTML =
+      proj.description;
+    element.querySelector('#projects-repo-lang').innerHTML = proj.language;
+    element.querySelector('#projects-repo-stars').innerHTML =
+      proj.stargazers_count;
+    element.querySelector(
+      '#projects-repo-langcolor'
+    ).style.backgroundColor = languageColor(proj.language);
   });
-  item.remove();
 }
-
 
 /* ### Run ### */
 async function main() {
@@ -299,9 +284,9 @@ async function main() {
   goTop(); // reset view
   // init finish after profile request data
   await getProfile(changeProfile, changeProfileError);
+  getLinks(changeLinks);
   getResume(changeResume);
   getInterests(changeInterests);
-  getLinks(changeLinks);
   getProjects(changeProjects);
   setScrollKeybind();
 }
