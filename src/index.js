@@ -1,5 +1,5 @@
 /* ### Global ### */
-const BRANCH = 'master';
+const BRANCH = 'main';
 const PROTOCOL = window.location.protocol;
 const PAGELEN = document.querySelectorAll('[id^="page"]').length - 1;
 let PAGE = 0;
@@ -271,9 +271,8 @@ function changeProjects(projects) {
     element.querySelector('#projects-repo-lang').innerHTML = proj.language;
     element.querySelector('#projects-repo-stars').innerHTML =
       proj.stargazers_count;
-    element.querySelector(
-      '#projects-repo-langcolor'
-    ).style.backgroundColor = languageColor(proj.language);
+    element.querySelector('#projects-repo-langcolor').style.backgroundColor =
+      languageColor(proj.language);
   });
 }
 
