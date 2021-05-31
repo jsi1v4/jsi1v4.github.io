@@ -1,5 +1,6 @@
 ## show logo
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/jsi1v4/jsi1v4/main/assets/logo.sh)"
+echo -e "I'm Jose Silva...\n"
 ## show resume
 echo -e "$(curl -fsSL https://raw.githubusercontent.com/jsi1v4/jsi1v4/main/topics/resume.md)\n"
 ## show links
