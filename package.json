@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "repository": "https://github.com/jsi1v4/jsi1v4.github.io.git",
   "author": "Jsi1v4 <me@jsi1v4.dev>",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "private": false,
   "scripts": {
     "start": "serve src",
