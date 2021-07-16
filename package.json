@@ -1,10 +1,10 @@
 {
   "name": "jsi1v4.github.io",
-  "version": "2.6",
-  "description": "Joseph bio webpage.",
+  "version": "2.7",
+  "description": "My bio webpage.",
   "main": "src/index.js",
   "repository": "https://github.com/jsi1v4/jsi1v4.github.io.git",
-  "author": "Jsi1v4 <me@jsi1v4.dev>",
+  "author": "Jsi1v4 <git@jsi1v4.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
