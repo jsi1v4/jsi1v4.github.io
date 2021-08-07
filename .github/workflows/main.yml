@@ -23,9 +23,11 @@ jobs:
 
     - name: install deps
       run: yarn install
-      
+
     - name: build app
       run: yarn build
-      
+
     - name: deploy app
-      run: yarn deploy
+      run: |
+        git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${{ GITHUB_REPOSITORY }}.git
+        yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
