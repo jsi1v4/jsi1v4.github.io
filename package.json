@@ -1,6 +1,6 @@
 {
   "name": "jsi1v4.github.io",
-  "version": "2.7",
+  "version": "2.8",
   "description": "My bio webpage.",
   "main": "src/index.js",
   "repository": "https://github.com/jsi1v4/jsi1v4.github.io.git",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "serve src",
+    "dev": "serve src",
     "prebuild": "rm -r dist/",
     "build": "babel src --out-dir dist --copy-files",
     "postbuild": "cp node_modules/@babel/polyfill/dist/polyfill.min.js dist/",
