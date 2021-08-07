@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "dev": "serve src",
-    "prebuild": "rm -r dist/",
+    "prebuild": "rm -rf dist/",
     "build": "babel src --out-dir dist --copy-files",
     "postbuild": "cp node_modules/@babel/polyfill/dist/polyfill.min.js dist/",
     "predeploy": "cp CNAME dist/",
