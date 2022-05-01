@@ -2,32 +2,30 @@ name: CI-CD
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: setup nodejs
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.17.4
+      - name: setup nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.19.1
 
-    - name: setup yarn
-      run: npm install -g yarn
+      - name: setup yarn
+        run: npm install -g yarn
 
-    - name: install deps
-      run: yarn install
+      - name: install deps
+        run: yarn install
 
-    - name: build app
-      run: yarn build
+      - name: build app
+        run: yarn build
 
-    - name: deploy app
-      run: |
-        git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
-        yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
+      - name: deploy app
+        run: |
+          git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
+          yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
