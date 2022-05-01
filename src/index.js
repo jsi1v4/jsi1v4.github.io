@@ -93,6 +93,21 @@ async function getInterests(onSuccess) {
   }
 }
 
+async function getTools(onSuccess) {
+  const data = await get(
+    `raw.githubusercontent.com/jsi1v4/jsi1v4/${BRANCH}/topics/tools.md`
+  );
+  if (data) {
+    const rows = data.split(/\r\n/g);
+    rows.pop();
+    const links = rows.map((a) => ({
+      label: a.match(/\[(.+)\]/g)[0].slice(1, -1),
+      href: a.match(/\((.+)\)/g)[0].slice(1, -1),
+    }));
+    onSuccess(links);
+  }
+}
+
 /* ### Navigation ### */
 function goTop() {
   PAGE = 0;
@@ -163,6 +178,15 @@ function initDOM() {
     toggleTheme();
     playToggle();
   };
+  document.querySelector('#tools-link').onclick = () => {
+    openModalTools();
+  };
+  document.querySelector('#tools-modal-overlay').onclick = () => {
+    closeModalTools();
+  };
+  document.querySelector('#tools-modal-close').onclick = () => {
+    closeModalTools();
+  };
 }
 
 function initTheme() {
@@ -208,6 +232,16 @@ function playToggle() {
 
 function playUp() {
   document.querySelector('#sound-up').play();
+}
+
+function openModalTools() {
+  document.querySelector('#tools-modal').style.display = 'flex';
+  document.querySelector('#tools-modal').classList.add('fadein');
+}
+
+function closeModalTools() {
+  document.querySelector('#tools-modal').style.display = 'none';
+  document.querySelector('#tools-modal').classList.remove('fadein');
 }
 
 function changeProfile({ avatar_url, name, bio }) {
@@ -276,6 +310,18 @@ function changeProjects(projects) {
   });
 }
 
+function changeTools(links) {
+  fillElement('#tools-modal-list', links, (element, link) => {
+    element
+      .querySelector('#tools-modal-list-link')
+      .setAttribute('title', link.label);
+    element.querySelector('#tools-modal-list-text').innerHTML = link.label;
+    element
+      .querySelector('#tools-modal-list-link')
+      .setAttribute('href', link.href);
+  });
+}
+
 /* ### Run ### */
 async function main() {
   initTheme();
@@ -287,6 +333,7 @@ async function main() {
   getResume(changeResume);
   getInterests(changeInterests);
   getProjects(changeProjects);
+  getTools(changeTools);
   setScrollKeybind();
 }
 
