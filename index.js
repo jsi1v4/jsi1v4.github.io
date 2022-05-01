@@ -204,8 +204,6 @@ function _getLinks() {
 function getInterests(_x7) {
   return _getInterests.apply(this, arguments);
 }
-/* ### Navigation ### */
-
 
 function _getInterests() {
   _getInterests = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(onSuccess) {
@@ -241,6 +239,47 @@ function _getInterests() {
     }, _callee6);
   }));
   return _getInterests.apply(this, arguments);
+}
+
+function getTools(_x8) {
+  return _getTools.apply(this, arguments);
+}
+/* ### Navigation ### */
+
+
+function _getTools() {
+  _getTools = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(onSuccess) {
+    var data, rows, links;
+    return regeneratorRuntime.wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
+            return get("raw.githubusercontent.com/jsi1v4/jsi1v4/".concat(BRANCH, "/topics/tools.md"));
+
+          case 2:
+            data = _context7.sent;
+
+            if (data) {
+              rows = data.split(/\r\n/g);
+              rows.pop();
+              links = rows.map(function (a) {
+                return {
+                  label: a.match(/\[(.+)\]/g)[0].slice(1, -1),
+                  href: a.match(/\((.+)\)/g)[0].slice(1, -1)
+                };
+              });
+              onSuccess(links);
+            }
+
+          case 4:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+  return _getTools.apply(this, arguments);
 }
 
 function goTop() {
@@ -329,6 +368,18 @@ function initDOM() {
     toggleTheme();
     playToggle();
   };
+
+  document.querySelector('#tools-link').onclick = function () {
+    openModalTools();
+  };
+
+  document.querySelector('#tools-modal-overlay').onclick = function () {
+    closeModalTools();
+  };
+
+  document.querySelector('#tools-modal-close').onclick = function () {
+    closeModalTools();
+  };
 }
 
 function initTheme() {
@@ -373,6 +424,16 @@ function playToggle() {
 
 function playUp() {
   document.querySelector('#sound-up').play();
+}
+
+function openModalTools() {
+  document.querySelector('#tools-modal').style.display = 'flex';
+  document.querySelector('#tools-modal').classList.add('fadein');
+}
+
+function closeModalTools() {
+  document.querySelector('#tools-modal').style.display = 'none';
+  document.querySelector('#tools-modal').classList.remove('fadein');
 }
 
 function changeProfile(_ref) {
@@ -429,6 +490,14 @@ function changeProjects(projects) {
     element.querySelector('#projects-repo-langcolor').style.backgroundColor = languageColor(proj.language);
   });
 }
+
+function changeTools(links) {
+  fillElement('#tools-modal-list', links, function (element, link) {
+    element.querySelector('#tools-modal-list-link').setAttribute('title', link.label);
+    element.querySelector('#tools-modal-list-text').innerHTML = link.label;
+    element.querySelector('#tools-modal-list-link').setAttribute('href', link.href);
+  });
+}
 /* ### Run ### */
 
 
@@ -437,17 +506,17 @@ function main() {
 }
 
 function _main() {
-  _main = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
-    return regeneratorRuntime.wrap(function _callee7$(_context7) {
+  _main = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+    return regeneratorRuntime.wrap(function _callee8$(_context8) {
       while (1) {
-        switch (_context7.prev = _context7.next) {
+        switch (_context8.prev = _context8.next) {
           case 0:
             initTheme();
             initDOM();
             goTop(); // reset view
             // init finish after profile request data
 
-            _context7.next = 5;
+            _context8.next = 5;
             return getProfile(changeProfile, changeProfileError);
 
           case 5:
@@ -455,14 +524,15 @@ function _main() {
             getResume(changeResume);
             getInterests(changeInterests);
             getProjects(changeProjects);
+            getTools(changeTools);
             setScrollKeybind();
 
-          case 10:
+          case 11:
           case "end":
-            return _context7.stop();
+            return _context8.stop();
         }
       }
-    }, _callee7);
+    }, _callee8);
   }));
   return _main.apply(this, arguments);
 }

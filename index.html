@@ -84,6 +84,9 @@
   <body>
     <header class="header">
       <nav class="nav">
+        <button class="nav__btn" id="tools-link">
+          <i class="nav__btn__icon fa fa-wrench"></i>
+        </button>
         <button class="nav__btn" id="theme-toggle">
           <i
             class="nav__btn__icon"
@@ -223,6 +226,23 @@
         The copyright of the images used here belong to their respective owners.
       </span>
     </footer>
+
+    <div id="tools-modal" class="tools-modal">
+      <div id="tools-modal-overlay" class="tools-modal__overlay"></div>
+      <div id="tools-modal-content" class="tools-modal__content">
+        <button id="tools-modal-close" class="tools-modal__close">
+          <i class="fa fa-close" aria-hidden="true"></i>
+        </button>
+        <ul id="tools-modal-list" class="tools-modal__list">
+          <li class="tools-modal__list__item">
+            <a id="tools-modal-list-link" class="tools-modal__link">
+              <i class="tools-modal__icon fa fa-link" aria-hidden="true"></i>
+              <span id="tools-modal-list-text"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <div>
       <audio id="sound-toggle">
