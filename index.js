@@ -224,7 +224,7 @@ function _getInterests() {
               interests = rows.map(function (a) {
                 return {
                   img: a.match(/(\[?\(.+\)\])/g)[0].slice(1, -2),
-                  title: a.match(/(\[\w+\])/g)[0].slice(1, -1),
+                  title: a.match(/(\[[\w.-]+\])/g)[0].slice(1, -1),
                   href: a.match(/(\)\]\(.+\))/g)[0].slice(3, -1)
                 };
               });
