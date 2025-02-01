@@ -86,7 +86,7 @@ async function getInterests(onSuccess) {
     rows.pop();
     const interests = rows.map((a) => ({
       img: a.match(/(\[?\(.+\)\])/g)[0].slice(1, -2),
-      title: a.match(/(\[\w+\])/g)[0].slice(1, -1),
+      title: a.match(/(\[[\w.-]+\])/g)[0].slice(1, -1),
       href: a.match(/(\)\]\(.+\))/g)[0].slice(3, -1),
     }));
     onSuccess(interests);
